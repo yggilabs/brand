@@ -167,6 +167,9 @@
       // https://stripe.com/docs/payments/checkout/fulfillment
       successUrl: 'https://yggilabs.github.io/brand/success',
       cancelUrl: 'https://yggilabs.github.io/brand/canceled',
+      shippingAddressCollection: {
+        allowedCountries: ['US', 'CA'],
+      }
     })
     .then(function (result) {
       if (result.error) {
