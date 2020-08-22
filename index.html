@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>clothing brand</title>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-inline-gallery" src="https://cdn.ampproject.org/v0/amp-inline-gallery-0.1.js"></script>
-    <script custom-element="amp-base-carousel" src="https://cdn.ampproject.org/v0/amp-base-carousel-0.1.js" async></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     <link rel="canonical" href="index.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -22,7 +21,7 @@
         padding: 0;
         color: white;
         font-weight: bold;
-        font-size: 48px;
+        font-size: 24px;
         background-color: #70a288;
         font-family: 'Source Code Pro', monospace;
       }
@@ -42,15 +41,15 @@
       }
 
       h1,h2,h3,h4,h5,h6 {
-        font-family: 'Merriweather', serif;
+        
       }
 
       button {
         background: none;
-        border: none;
         outline: none;
         display: inline;
         color: inherit;
+        padding: 0 1em;
         font: inherit;
         cursor: pointer;
         border-radius: 8px;
@@ -75,6 +74,41 @@
 
       .small {
         font-size: .5em;
+      }
+
+      .activation > label {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        border: solid transparent 5px;
+        padding: 0 1em;
+        border-radius: 8px;
+      }
+
+      .activation input[type=radio] {
+        display: none;
+      }
+
+      .activation input[type=radio]:checked + label {
+        border-color: white;
+      }
+
+      .activation input[type=text] {
+        background: none;
+        outline: none;
+        display: inline;
+        color: inherit;
+        font: inherit;
+        padding: 0 1em;
+        cursor: pointer;
+        border-radius: 8px;
+        border: solid white 5px;
+      }
+
+      .activation button[type=submit] {
+
       }
 
       a {
@@ -109,7 +143,7 @@
         <li>Choose where your money goes for every badge.</li>
         <li>Consider giving one badge away, they come in pairs.</li>
       </ul>
-      <h2>Partners</h2>
+      <h2>partners</h2>
       <p>&lt;brand&gt; has partnered with these charity organizations in following our give more principle.</p>
       <ul>
         <li><a href="#charity">&lt;charity&gt;</a> is an organiztion that does charitable things such as things and other things.</li>
@@ -122,40 +156,56 @@
         <li>...</li>
         <li>...</li>
       </ul>
-      <h2 id="shop">Shop</h2>
+      <h2 id="shop">shop</h2>
       <p>Badges mark your clothing in a commitment to and an act of, the buy less & give more principles.</p>
       <p>1 + 1 badge kit - <i>$20</i></p>
       <button id="checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX" role="link" type="button">order</button><span class="fade small"> powered by stripe</span>
       <p>See the <a href="#guides">guides</a> for what to do with each badge.</p>
-      <h2 id="guides">Guides</h2>
+      <h2 id="guides">guides</h2>
       <h3>application</h3>
-      <i>video guide</i>
-      <ol>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ol>
+      <amp-youtube
+        data-videoid="mGENRKrdoGY"
+        layout="responsive"
+        width="480"
+        height="270"
+      ></amp-youtube>
       <h3>activation</h3>
-      <i>video guide</i>
-      <ol>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ol>
+      <amp-youtube
+        data-videoid="mGENRKrdoGY"
+        layout="responsive"
+        width="480"
+        height="270"
+      ></amp-youtube>
       <h3>style tips</h3>
       <ul>
         <li></li>
         <li></li>
         <li></li>
       </ul>
-      <h2>Faqs</h2>
+      <h2>faqs</h2>
       <h3>How does buying another product help me to "buy less"?</h3>
       <p>We think that when you brand your clothing, you become more invested in it. Not only has the monetary investment increased but, the amount of time and thought as well. It's our hope that this investment changes and reinforces your behavior to align with the buy less principle.</p>
       <h3>How much of my purchase goes to charity?</h3>
       <p>When a badge is activated $2 is donated to the selected charity.</p>
+      <h2 id="activate">activate</h2>
+      <form class="activation">
+        <p>1. select a charity</p>
+        <input type="radio" id="c0" name="charity" value="c0" checked>
+        <label for="c0">
+          <a href="#charity">&lt;charity&gt;</a> is an organiztion that does charitable things such as things and other things.
+        </label>
+        <input type="radio" id="c1" name="charity" value="c1">
+        <label for="c1">
+          <a href="#charity">&lt;charity&gt;</a> is an organiztion that does charitable things such as things and other things.
+        </label>
+        <p>2. enter your activation code</p>
+        <input type="text" minlength="6" maxlength="6" size="6">
+        <p>3. confirm your choice</p>
+        <button type="submit">activate</button>
+      </form>
     </main>
     <footer class="footer">
-      <section class="footer__content">made with ☕ in Minneapolis by Sam Kelley. © 2020 &lt;brand&gt;</section>
+      <section class="footer__content">&lt;&gt; with ☕ in Minneapolis by Sam Kelley. © 2020 &lt;brand&gt;</section>
     </footer>
 
     <!-- Load Stripe.js on your website. -->
