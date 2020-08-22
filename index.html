@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>clothing brand</title>
+    <link rel="canonical" href="index.html">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-    <link rel="canonical" href="index.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <style amp-custom>
       :root {
         --main_max-width: 1024px;
-        --main_padding: 24px;
+        --main_padding: 16px;
       }
 
       body {
@@ -22,7 +22,7 @@
         color: white;
         font-weight: bold;
         font-size: 24px;
-        background-color: #70a288;
+        background-color: #384c86;
         font-family: 'Source Code Pro', monospace;
       }
 
@@ -30,9 +30,27 @@
         position: relative;
         left: 50%;
         width: 100%;
+        box-sizing: border-box;
         max-width: var(--main_max-width);
         padding: var(--main_padding);
         transform: translateX(-50%)
+      }
+
+      .header__content::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - var(--main_padding) * 2);
+        display: block;
+        border-bottom: solid white 5px;
+      }
+
+      .header {
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 100;
+        background-color: inherit;
+        top: 0;
       }
 
       .nav {
@@ -40,8 +58,16 @@
         justify-content: space-between;
       }
 
-      h1,h2,h3,h4,h5,h6 {
-        
+      h2 {
+        scroll-margin-top: 2.33em;
+      }
+
+      h3 {
+        scroll-margin-top: 3.17em;
+      }
+
+      .anchor {
+
       }
 
       button {
@@ -61,6 +87,15 @@
       }
 
       .footer__content {
+        position: relative;
+      }
+
+      .footer__content::after {
+        content: '';
+        position: absolute;
+        top:0;
+        width: calc(100% - var(--main_padding) * 2);
+        display: block;
         border-top: solid white 5px;
       }
 
@@ -131,7 +166,7 @@
       <h1 class="hidden">&lt;brand&gt;</h1>
       <h2 class="hidden">overview</h2>
       <p>&lt;brand&gt; is a radical clothing brand on a mission to change the way we think about apparel. We promote responsible consumerism by following two fundamental principles. <a href="#buy-less">buy less</a> &amp; <a href="#give-more">give more</a>.</p>
-      <h3 id="buy-less"><span class="stroke">buy</span> less</h3>
+      <h3 id="buy-less" class="anchor"><span class="stroke">buy</span> less</h3>
       <q class="fade">waste not, want not</q>
       <ul>
         <li>Choose longer lasting, more durable clothing.</li>
@@ -156,7 +191,7 @@
         <li>...</li>
         <li>...</li>
       </ul>
-      <h2 id="shop">shop</h2>
+      <h2 id="shop" class="anchor">shop</h2>
       <p>Badges mark your clothing in a commitment to and an act of, the buy less & give more principles.</p>
       <p>1 + 1 badge kit - <i>$20</i></p>
       <button id="checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX" role="link" type="button">order</button><span class="fade small"> powered by stripe</span>
