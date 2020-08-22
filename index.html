@@ -53,11 +53,16 @@
         color: inherit;
         font: inherit;
         cursor: pointer;
-        text-decoration: underline;
+        border-radius: 8px;
+        border: solid white 5px;
       }
 
       .footer {
         margin-top: 64px;
+      }
+
+      .footer__content {
+        border-top: solid white 5px;
       }
 
       .hidden {
@@ -66,6 +71,10 @@
 
       .fade {
         opacity: 70%;
+      }
+
+      .small {
+        font-size: .5em;
       }
 
       a {
@@ -101,15 +110,22 @@
         <li>Consider giving one badge away, they come in pairs.</li>
       </ul>
       <h2>Partners</h2>
+      <p>&lt;brand&gt; has partnered with these charity organizations in following our give more principle.</p>
       <ul>
         <li><a href="#charity">&lt;charity&gt;</a> is an organiztion that does charitable things such as things and other things.</li>
+        <li>...</li>
+        <li>...</li>
+      </ul>
+      <p>&lt;brand&gt; has partnered with these apparel sellers in following our buy less principle.</p>
+      <ul>
+        <li><a href="#charity">&lt;retail&gt;</a> is an organiztion that offers good thing for sale that will last a while.</li>
         <li>...</li>
         <li>...</li>
       </ul>
       <h2 id="shop">Shop</h2>
       <p>Badges mark your clothing in a commitment to and an act of, the buy less & give more principles.</p>
       <p>1 + 1 badge kit - <i>$20</i></p>
-      <button id="checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX" role="link" type="button">order</button><span class="fade"> powered by stripe</span>
+      <button id="checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX" role="link" type="button">order</button><span class="fade small"> powered by stripe</span>
       <p>See the <a href="#guides">guides</a> for what to do with each badge.</p>
       <h2 id="guides">Guides</h2>
       <h3>application</h3>
@@ -139,7 +155,7 @@
       <p>When a badge is activated $2 is donated to the selected charity.</p>
     </main>
     <footer class="footer">
-      <section class="footer__content"><hr>made with ☕ in Minneapolis by Sam Kelley. © 2020 &lt;brand&gt;</section>
+      <section class="footer__content">made with ☕ in Minneapolis by Sam Kelley. © 2020 &lt;brand&gt;</section>
     </footer>
 
     <!-- Load Stripe.js on your website. -->
