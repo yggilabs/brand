@@ -6,6 +6,8 @@
     <link rel="canonical" href="index.html">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
@@ -14,6 +16,7 @@
       :root {
         --main_max-width: 1024px;
         --main_padding: 16px;
+        --color__primary: #384c86;
       }
 
       body {
@@ -22,7 +25,7 @@
         color: white;
         font-weight: bold;
         font-size: 24px;
-        background-color: #384c86;
+        background-color: var(--color__primary);
         font-family: 'Source Code Pro', monospace;
       }
 
@@ -71,10 +74,10 @@
       }
 
       button {
-        background: none;
+        background: white;
         outline: none;
         display: inline;
-        color: inherit;
+        color: var(--color__primary);
         padding: 0 1em;
         font: inherit;
         cursor: pointer;
@@ -153,6 +156,21 @@
       ol {
         margin-left: 50px;
       }
+
+      .nav__menu {
+        display: none;
+        text-align: right;
+        list-style: none;
+      }
+
+      .nav:hover > .nav__menu {
+        display: block;
+      }
+
+      .nav:hover > .nav__toggle {
+        display: none;
+      }
+
     </style>
   </head>
   <body>
@@ -160,6 +178,16 @@
       <nav class="header__content nav">
         <a href="#">&lt;brand-logo&gt;</a>
         <a href="#shop">shop</a>
+        <!--
+        <span class="nav__toggle">menu</span>
+        <ul class="nav__menu">
+          <li><a href="#partners">partners</a></li>
+          <li><a href="#shop">shop</a></li>
+          <li><a href="#guides">guides</a></li>
+          <li><a href="#faqs">faqs</a></li>
+          <li><a href="#activate">activate</a></li>
+        </ul>
+        -->
       </nav>
     </header>
     <main class="main">
@@ -178,7 +206,7 @@
         <li>Choose where your money goes for every badge.</li>
         <li>Consider giving one badge away, they come in pairs.</li>
       </ul>
-      <h2>partners</h2>
+      <h2 id="partners">partners</h2>
       <p>&lt;brand&gt; has partnered with these charity organizations in following our give more principle.</p>
       <ul>
         <li><a href="#charity">&lt;charity&gt;</a> is an organiztion that does charitable things such as things and other things.</li>
@@ -194,7 +222,9 @@
       <h2 id="shop" class="anchor">shop</h2>
       <p>Badges mark your clothing in a commitment to and an act of, the waste less & give more principles.</p>
       <p>1 + 1 badge kit - <i>$20</i></p>
-      <button id="checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX" role="link" type="button">order</button><span class="fade small"> powered by stripe</span>
+
+      <button id="checkout-button" role="link" type="button">order</button><span class="fade small"> powered by <a href="https://stripe.com" target="_blank">stripe</a></span>
+
       <p>See the <a href="#guides">guides</a> for what to do with each badge.</p>
       <h2 id="guides">guides</h2>
       <h3>application</h3>
@@ -217,7 +247,7 @@
         <li></li>
         <li></li>
       </ul>
-      <h2>faqs</h2>
+      <h2 id="faqs">faqs</h2>
       <h3>How does buying another product help me to "waste less"?</h3>
       <p>We think that when you brand your clothing, you become more invested in it. Not only has the monetary investment increased but, the amount of time and thought as well. It's our hope that this investment changes and reinforces your behavior to align with the waste less principle.</p>
       <h3>How much of my purchase goes to charity?</h3>
@@ -254,7 +284,8 @@
 (function() {
   var stripe = Stripe('pk_test_T1wNguDrKdaa162L0NY455qK00GrQDVWX1');
 
-  var checkoutButton = document.getElementById('checkout-button-price_1HIUsUDd4uECyYWrVKsis9zX');
+  var checkoutButton = document.getElementById('checkout-button');
+  console.log(checkoutButton);
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
@@ -273,11 +304,14 @@
       }
     })
     .then(function (result) {
+      checkoutButton.removeAttribute("disabled");
       if (result.error) {
         // If `redirectToCheckout` fails due to a browser or network
         // error, display the localized error message to your customer.
         var displayError = document.getElementById('error-message');
         displayError.textContent = result.error.message;
+      } else {
+
       }
     });
   });
