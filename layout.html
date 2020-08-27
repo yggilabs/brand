@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html ⚡ lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>
+    <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
+  </head>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
+    body {
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      background-color: var(--color__primary);
+      font-family: 'Source Code Pro', monospace;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 0;
+
+    }
+
+    .header {
+      padding: .5em;
+    }
+
+    .header__content {
+      border-bottom: solid #fff 4px;
+    }
+
+    .header > h1 {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .footer__content {
+      padding: .5em;
+      border-top: solid #fff 4px;
+    }
+
+    .grid {
+      display: grid;
+      --width: 1024px;
+      --header_height: 2em;
+      --grid__section_height: 95vh;
+      grid-template-columns:
+        [full-left]
+        1fr
+        [content-left]
+        minmax(auto, calc(var(--width) / 2))
+        [center]
+        minmax(auto, calc(var(--width) / 2))
+        [content-right]
+        1fr
+        [full-right];
+      grid-template-rows:
+        [hero-top header-top]
+        var(--header_height)
+        [header-bottom]
+        calc(95vh - var(--header_height))
+        [hero-bottom detail-top]
+        var(--header_height)
+        auto
+        auto
+        auto
+        [detail-bottom footer-top]
+        auto
+        [footer-bottom];
+      grid-template-areas:
+        ". header header ."
+        ". hero-title hero-content."
+        ". . . ."
+        ". detail-intro detail-intro ."
+        ". detail-waste-less detail-give-more ."
+        ". detail-how-does-it-work detail-how-does-it-work ."
+        ". footer footer ."
+    }
+
+    .grid__item {
+      min-height: 4em;
+    }
+
+    .hero__background {
+      background-color: green;
+      background-size: cover !important;
+      filter: grayscale(1);
+      background-repeat: no-repeat;
+      background: url('https://www.duluthtrading.com/dw/image/v2/BBNM_PRD/on/demandware.static/-/Sites-DTC-Library/default/dwd40382a2/images/AKHG/080520-marquee-AKHG-89319-flannel.jpg?sw=1440&amp;sfrm=jpg')
+    }
+
+    .grid__header {
+      z-index: 1;
+      grid-area: header;
+    }
+
+    .grid__hero {
+      grid-column: full-left / full-right;
+      grid-row: hero-top / hero-bottom;
+    }
+
+    .grid__hero-content {
+      grid-column: content-left / content-right;
+      grid-row: header-bottom / hero-bottom;
+    }
+
+    .grid__hero-content-left {
+      grid-area: hero-title;
+    }
+
+    .grid__hero-content-right {
+      grid-area: hero-content;
+    }
+
+    .grid .contents {
+      display: contents;
+    }
+
+    .grid__detail-content {
+      grid-area: detail-intro;
+    }
+
+    .grid__detail-list-1 {
+      grid-area: detail-waste-less;
+    }
+
+    .grid__detail-list-2 {
+      grid-area: detail-give-more;
+    }
+
+    .grid__detail-aside {
+      grid-area: detail-how-does-it-work;
+    }
+
+    .grid__detail {
+      grid-column: full-left / full-right;
+      grid-row: detail-top / detail-bottom;
+    }
+
+    .grid__footer {
+      grid-column: full-left / full-right;
+      grid-row: footer-top / footer-bottom;
+    }
+
+    .grid__footer-content {
+      grid-area: footer;
+    }
+
+    .detail__background {
+      background-color: #212121;
+    }
+
+    .footer__background {
+      background-color: #212121;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .hero__title {
+      position: relative;
+    }
+
+    .hero__title {
+      position: relative;
+      top: 25%;
+      right: 0;
+      text-align: right;
+      font-size: 56px;
+      margin-right: -2px;
+      padding-right: 32px;
+      border-right: solid #fff 4px;
+    }
+
+    .hero__title > h1 {
+      margin: 0;
+    }
+
+    .hero__content > h2 {
+      margin: 0;
+    }
+
+    .hero__content {
+      position: relative;
+      padding-left: 32px;
+      top: 25%;
+    }
+
+    .detail__aside {
+
+    }
+
+    .detail__principle {
+      border: solid #fff 4px;
+      margin: 0 64px;
+      padding: 0 16px;
+      border-radius: 8px;
+    }
+
+    .header h1 {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .mission-statement {
+      quotes: "\201C""\201D""\2018""\2019";
+      transform-origin: center;
+
+    }
+
+    .flip__side {
+      position: absolute;
+      backface-visibility: hidden;
+      left: 50%;
+      height: 400px;
+      width: 400px;
+      padding: 32px;
+      border-radius: 8px;
+      border: solid #fff 4px;
+      transform: rotateZ(-45deg) translateX(-33%) translateY(-37%);
+    }
+
+    .flip__side:nth-child(2) {
+      transform: rotateZ(-45deg) translateX(-33%) translateY(-37%) rotate3d(0, 1, 0, 180deg);
+      background-color: #fff;
+      color: #e76f51;
+    }
+
+    .logo {
+      border: solid #e76f51 8px;
+      box-sizing: border-box;
+      height: 100%;
+      font-size: 300px;
+      border-radius: 16px;
+    }
+
+    .flip {
+      height: 600px;
+      position: relative;
+      transform-origin: center;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      transform: translateY(32px) rotate3d(0, 1, 0, 0);
+    }
+
+    .grid__detail-content:hover .flip {
+      transform: rotate3d(0, 1, 0, 180deg) scale(.2);
+    }
+
+    .mission-statement:before {
+      color: #fff;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+
+    .mission-statement > footer {
+      text-align: right;
+    }
+
+    blockquote {
+      margin: 0;
+    }
+
+
+  </style>
+  <body id="top" class="grid">
+    <header class="grid__header header sticky">
+      <div class="header__content" amp-fx="fade-in">
+        <a href="#"><h1>&lt;brand&gt;</h1></a>
+        <nav class="nav">
+          <span class="nav__toggle"></span>
+        </nav>
+      </div>
+    </header>
+    <section class="hero contents" style="height: 150vh">
+    <div class="grid__hero hero__background "></div>
+    <div class="grid__item grid__hero-content"></div>
+    <div class="grid__item grid__hero-content-left">
+      <div class="hero__title" amp-fx="parallax" data-parallax-factor="1.5"><h1>a new kind of clothing brand</h1></div>
+    </div>
+    <div class="grid__item grid__hero-content-right">
+      <div class="hero__content" amp-fx="parallax" data-parallax-factor=".8">
+        <h2 amp-fx="fly-in-bottom">We dont make clothes we just make them matter</h2>
+        <p amp-fx="fade-in">founded in the miswest, sound tough here or something but also with a soft side that show how much we care bout our neighbors.</p>
+        <p amp-fx="fade-in"><a href="#tap" on="tap:detail.scrollTo(duration=200)">read more</a></p>
+      </div>
+    </div>
+    </section>
+    <section class="detail contents">
+    <div id="detail" class="grid__detail detail__background"></div>
+    <div class="grid__item grid__detail-content">
+      <div class="flip">
+        <blockquote class="flip__side mission-statement">We are a radical clothing brand on a mission to change the way we think about apparel. We promote responsible consumerism by following two fundamental principles. waste less & give more.<footer>—&lt;brand&gt;'s mission</footer></blockquote>
+        <div class="flip__side"><div class="logo">Br</div></div>
+      </div>
+    </div>
+    <div class="grid__item grid__detail-list-1">
+      <article class="detail__principle">
+        <h1>waste less</h1>
+        <p>get the most out of the things you buy</p>
+        <uL>
+          <li>Choose longer lasting, more durable clothing.</li>
+          <li>Continue to wear worn clothing longer.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="grid__item grid__detail-list-2">
+      <article class="detail__principle">
+        <h1>give more</h1>
+        <p>take care of those around you</p>
+        <uL>
+          <li>Choose where your money goes for every badge.</li>
+          <li>Consider giving one badge away, they come in pairs.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="grid__item grid__detail-aside">
+      <aside class="detail__aside">
+        <h1>How does it work?</h1>
+        <p>When you re:brand a product you simply attach a badge to your product. The badge is both a commitment to the principles above as well as, a tangible reminder of that commitment for the future. We currently offer both iron-on and hand sew options for our badges.</p>
+        <p>Each badge comes with an activation code and a unique website address. When you visit the website address and activate your badge using the code, you can select which charity you would like that badge's purchase to support.</p>
+        <p>Since each purchase comes with a pair of badges, we encourage our customers to give one of the badges away after using one. Each badge has a seperate activation and choice of charity.</p>
+      </aside>
+    </div>
+    </section>
+    <footer class="footer contents">
+      <div class="grid__footer footer__background"></div>
+      <div class="grid__item grid__footer-content footer__content">&lt;&gt; with ☕ in Minneapolis by Sam Kelley. © 2020 &lt;brand&gt;</div>
+    </footer>
+    <!--
+    <section>
+      <h1>a new kind of clothing brand</h1>
+      <h2>We dont make clothes we just make the brand</h2>
+      <p>We are a radical clothing brand on a mission to change the way we think about apparel. We promote responsible consumerism by following two fundamental principles. waste less & give more.</p>
+    </section>
+    <section>
+      <h1></h1>
+      <arcticle>
+        <h1>waste less</h1>
+        <p>get the most out of the things you buy</p>
+        <uL>
+          <li>Choose longer lasting, more durable clothing.</li>
+          <li>Continue to wear worn clothing longer.</li>
+        </ul>
+      </arcticle>
+      <arcticle>
+        <h1>give more</h1>
+        <p>take care of those around you</p>
+        <uL>
+          <li>Choose where your money goes for every badge.</li>
+          <li>Consider giving one badge away, they come in pairs.</li>
+        </ul>
+      </arcticle>
+    </section>
+    <section>
+      <h1>How does it work?</h1>
+      <p>When you re:brand a product you simply attach a badge to your product. The badge is both a commitment to the principles above as well as, a tangible reminder of that commitment for the future. We currently offer both iron-on and hand sew options for our badges.</p>
+      <p>Each badge comes with an activation code and a unique website address. When you visit the website address and activate your badge using the code, you can select which charity you would like that badge's purchase to support.</p>
+      <p>Since each purchase comes with a pair of badges, we encourage our customers to give one of the badges away after using one. Each badge has a seperate activation and choice of charity.</p>
+    </section>
+    -->
+  </body>
+</html>
